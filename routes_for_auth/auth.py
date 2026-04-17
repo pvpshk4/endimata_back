@@ -101,7 +101,7 @@ def standard_login():
     if result is None or result["status"] == "error":
         return jsonify(result), 401
 
-    access_token = create_access_token(identity=result["id_user"])
+    access_token = create_access_token(identity=str(result["id_user"]))
     refresh_token = create_refresh_token(identity=result["id_user"])
 
     return jsonify({
